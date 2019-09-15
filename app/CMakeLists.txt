@@ -14,7 +14,7 @@ endif()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(app main.cc)
+add_executable(app main.cc ${VIEWSRC})
 
 ##########
 # If you include the drogon source code locally in your project, use this method to add drogon
