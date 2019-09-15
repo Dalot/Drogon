@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+
+  drogon:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: drogon:latest
+    volumes:
+     - ./:/home/drogon
+    networks:
+     - drogonet
+    ports:
+     - 80:80
+    tty: true
+    working_dir: /home/drogon
+
+  db:
+    image: postgres:latest
+    restart: always
+    volumes:
+     - dbdata:/var/lib/postgresql/data
+    networks:
+     - drogonet
+    ports:
+      - 3306:3306
+    environment:
+      POSTGRES_PASSWORD: secret
+networks:
+  drogonet:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
