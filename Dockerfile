@@ -17,6 +17,9 @@ ENV LANG=en_US.UTF-8 \
     RANLIB=gcc-ranlib-8 \
     IROOT=/install
 
+RUN apt-get update -yqq \
+    && apt-get install gdb
+
 ENV DROGON_ROOT="$IROOT/drogon"
 
 ADD https://api.github.com/repos/an-tao/drogon/git/refs/heads/master $IROOT/version.json
